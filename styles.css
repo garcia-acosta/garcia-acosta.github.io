@@ -1,40 +1,244 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --border: #2a2a2a;
+  --accent: #c8a96e;
+  --text: #e8e6e0;
+  --muted: #888;
+  --max-width: 760px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-font-family: Georgia, serif;
-      background: #f5f2eb;
-      color: #1a1a1a;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-    }
+  font-family: 'Georgia', serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
 
-    main {
-      max-width: 520px;
-      text-align: center;
-    }
+/* ── Hero ─────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  border-bottom: 1px solid var(--border);
+}
 
-    h1 {
-      font-size: 2.8rem;
-      font-weight: normal;
-      letter-spacing: -0.02em;
-      margin-bottom: 1rem;
-    }
+.hero-inner {
+  max-width: var(--max-width);
+  width: 100%;
+}
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-      color: #555;
-    }
+.hero-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
 
-    footer {
-      position: fixed;
-      bottom: 1.5rem;
-      font-size: 0.75rem;
-      color: #aaa;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
+h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: normal;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.hero-role {
+  font-size: 1.15rem;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  font-style: italic;
+}
+
+.hero-tagline {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.hero-links a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.hero-links a:hover {
+  border-color: var(--accent);
+}
+
+.sep {
+  color: var(--border);
+}
+
+/* ── Main content ─────────────────────── */
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section {
+  padding: 4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+section:last-child {
+  border-bottom: none;
+}
+
+h2 {
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+section p {
+  font-size: 1.05rem;
+  color: #ccc;
+  max-width: 600px;
+}
+
+/* ── Jobs ─────────────────────────────── */
+.job {
+  margin-bottom: 2.5rem;
+}
+
+.job:last-child {
+  margin-bottom: 0;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.job-title {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--text);
+}
+
+.job-company {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-left: 0.25rem;
+}
+
+.job-date {
+  font-size: 0.8rem;
+  color: var(--muted);
+  white-space: nowrap;
+  font-family: monospace;
+  letter-spacing: 0.04em;
+}
+
+.job ul {
+  list-style: none;
+  padding: 0;
+}
+
+.job ul li {
+  font-size: 0.95rem;
+  color: #bbb;
+  padding: 0.2rem 0;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.job ul li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+/* ── Skills ───────────────────────────── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 2rem;
+}
+
+.skill-group h3 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  font-family: 'Georgia', serif;
+  font-weight: normal;
+}
+
+.skill-group ul {
+  list-style: none;
+}
+
+.skill-group ul li {
+  font-size: 0.95rem;
+  color: #ccc;
+  padding: 0.2rem 0;
+}
+
+/* ── Footer ───────────────────────────── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+footer a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--accent);
+}
+
+/* ── Responsive ───────────────────────── */
+@media (max-width: 600px) {
+  .job-header {
+    flex-direction: column;
+  }
+
+  .hero {
+    padding: 3rem 1.5rem;
+    min-height: auto;
+    padding-top: 5rem;
+  }
+
+  main {
+    padding: 0 1.5rem;
+  }
+}
